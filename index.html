@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saurabh | Professional Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+
+</head>
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-indicator"></div>
+
+  <!-- Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="scrollToSection('home')">Saurabh.Tiwari</div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="ri-menu-3-line"></i>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active" onclick="scrollToSection('home')">Home</a></li>
+        <li><a href="#about" class="nav-link" onclick="scrollToSection('about')">About</a></li>
+        <li><a href="#skills" class="nav-link" onclick="scrollToSection('skills')">Skills</a></li>
+        <li><a href="#projects" class="nav-link" onclick="scrollToSection('projects')">Projects</a></li>
+        <li><a href="#experience" class="nav-link" onclick="scrollToSection('experience')">Experience</a></li>
+        <li><a href="#contact" class="nav-link" onclick="scrollToSection('contact')">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="ri-moon-line"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-profile" onclick="uploadHeroImage()" title="Click to upload profile picture">
+      <img id="heroProfileImg" src="" alt="Profile" />
+      <div class="hero-profile-placeholder" id="heroProfilePlaceholder">👤</div>
+    </div>
+    <input type="file" id="heroImageInput" accept="image/*">
+    
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Saurabh Tiwari</h1>
+      <p class="hero-subtitle">Full-Stack Developer & UI/UX Designer</p>
+      <p class="hero-description">
+        Crafting digital experiences with modern technologies and creative design. 
+        Specialized in React, Node.js, and cutting-edge web development.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary" onclick="scrollToSection('projects')">
+          <i class="ri-eye-line"></i> View My Work
+        </a>
+        <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">
+          <i class="ri-message-line"></i> Let's Connect
+        </a>
+        <a href="#" class="btn btn-secondary" onclick="downloadResume()">
+          <i class="ri-download-line"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>About Me</h2>
+        <p>Passionate developer with a keen eye for design and performance</p>
+      </div>
+      <div class="about-content fade-in">
+        <div class="about-image">
+          <div class="profile-img-container" onclick="uploadProfileImage()" title="Click to upload profile picture">
+            <img id="profileImg" src="" alt="Profile Picture" class="profile-img" />
+            <div class="profile-placeholder" id="profilePlaceholder">👨‍💻</div>
+            <div class="image-upload-overlay">
+              <i class="ri-camera-line"></i>
+              <span>Click to upload<br>profile picture</span>
+            </div>
+          </div>
+          <input type="file" id="imageInput" accept="image/*">
+          <div class="image-controls">
+            <button class="image-btn" onclick="uploadProfileImage()">
+              <i class="ri-upload-2-line"></i> Upload Image
+            </button>
+            <button class="image-btn remove" onclick="removeProfileImage()" id="removeBtn" style="display: none;">
+              <i class="ri-delete-bin-line"></i> Remove
+            </button>
+          </div>
+        </div>
+        <div class="about-text">
+          <h3>Creative Problem Solver</h3>
+          <p>
+            I'm a passionate full-stack developer with over 3 years of experience creating 
+            digital solutions that make a difference. My journey started with curiosity 
+            about how websites work, and it has evolved into a deep love for crafting 
+            exceptional user experiences.
+          </p>
+          <p>
+            I specialize in modern web technologies and enjoy working on projects that 
+            challenge me to learn and grow. When I'm not coding, you'll find me exploring 
+            new design trends, contributing to open-source projects, or mentoring fellow developers.
+          </p>
+          <div class="stats">
+            <div class="stat-item" onclick="showStatDetails('projects')">
+              <span class="stat-number" id="projectCount">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item" onclick="showStatDetails('experience')">
+              <span class="stat-number" id="experienceCount">0</span>
+              <span class="stat-label">Years Exp</span>
+            </div>
+            <div class="stat-item" onclick="showStatDetails('clients')">
+              <span class="stat-number" id="clientCount">0</span>
+              <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-item" onclick="showStatDetails('satisfaction')">
+              <span class="stat-number" id="satisfactionCount">0</span>
+              <span class="stat-label">Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Skills & Expertise</h2>
+        <p>Technologies and tools I work with to bring ideas to life</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category fade-in">
+          <h3><i class="ri-code-s-slash-line"></i> Frontend Development</h3>
+          <div class="skill-list">
+            <span class="skill-tag" onclick="showSkillDetails('React')">React</span>
+            <span class="skill-tag" onclick="showSkillDetails('Next.js')">Next.js</span>
+            <span class="skill-tag" onclick="showSkillDetails('Vue.js')">Vue.js</span>
+            <span class="skill-tag" onclick="showSkillDetails('TypeScript')">TypeScript</span>
+            <span class="skill-tag" onclick="showSkillDetails('JavaScript')">JavaScript</span>
+            <span class="skill-tag" onclick="showSkillDetails('HTML5')">HTML5</span>
+            <span class="skill-tag" onclick="showSkillDetails('CSS3')">CSS3</span>
+            <span class="skill-tag" onclick="showSkillDetails('Tailwind CSS')">Tailwind CSS</span>
+            <span class="skill-tag" onclick="showSkillDetails('SASS')">SASS</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in">
+          <h3><i class="ri-server-line"></i> Backend Development</h3>
+          <div class="skill-list">
+            <span class="skill-tag" onclick="showSkillDetails('Node.js')">Node.js</span>
+            <span class="skill-tag" onclick="showSkillDetails('Express.js')">Express.js</span>
+            <span class="skill-tag" onclick="showSkillDetails('Python')">Python</span>
+            <span class="skill-tag" onclick="showSkillDetails('Django')">Django</span>
+            <span class="skill-tag" onclick="showSkillDetails('FastAPI')">FastAPI</span>
+            <span class="skill-tag" onclick="showSkillDetails('MongoDB')">MongoDB</span>
+            <span class="skill-tag" onclick="showSkillDetails('PostgreSQL')">PostgreSQL</span>
+            <span class="skill-tag" onclick="showSkillDetails('Redis')">Redis</span>
+            <span class="skill-tag" onclick="showSkillDetails('GraphQL')">GraphQL</span>
+            <span class="skill-tag" onclick="showSkillDetails('REST APIs')">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in">
+          <h3><i class="ri-smartphone-line"></i> Mobile & Cloud</h3>
+          <div class="skill-list">
+            <span class="skill-tag" onclick="showSkillDetails('React Native')">React Native</span>
+            <span class="skill-tag" onclick="showSkillDetails('Flutter')">Flutter</span>
+            <span class="skill-tag" onclick="showSkillDetails('PWA')">PWA</span>
+            <span class="skill-tag" onclick="showSkillDetails('Docker')">Docker</span>
+            <span class="skill-tag" onclick="showSkillDetails('AWS')">AWS</span>
+            <span class="skill-tag" onclick="showSkillDetails('Firebase')">Firebase</span>
+            <span class="skill-tag" onclick="showSkillDetails('Git')">Git</span>
+            <span class="skill-tag" onclick="showSkillDetails('CI/CD')">CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in">
+          <h3><i class="ri-palette-line"></i> Design & Tools</h3>
+          <div class="skill-list">
+            <span class="skill-tag" onclick="showSkillDetails('Figma')">Figma</span>
+            <span class="skill-tag" onclick="showSkillDetails('Adobe XD')">Adobe XD</span>
+            <span class="skill-tag" onclick="showSkillDetails('Photoshop')">Photoshop</span>
+            <span class="skill-tag" onclick="showSkillDetails('Illustrator')">Illustrator</span>
+            <span class="skill-tag" onclick="showSkillDetails('Framer')">Framer</span>
+            <span class="skill-tag" onclick="showSkillDetails('Webflow')">Webflow</span>
+            <span class="skill-tag" onclick="showSkillDetails('Blender')">Blender</span>
+            <span class="skill-tag" onclick="showSkillDetails('Three.js')">Three.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Featured Projects</h2>
+        <p>Some of my recent work that I'm proud of</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card fade-in" onclick="showProjectDetails('ecommerce')">
+          <div class="project-image"></div>
+          <div class="project-content">
+            <h3 class="project-title">E-Commerce Platform</h3>
+            <p class="project-description">
+              A full-stack e-commerce solution with real-time inventory management, 
+              payment integration, and advanced analytics dashboard.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Stripe</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openLiveDemo('ecommerce')">
+                <i class="ri-external-link-line"></i> Live Demo
+              </a>
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openGithub('ecommerce')">
+                <i class="ri-github-line"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in" onclick="showProjectDetails('taskmanager')">
+          <div class="project-image" style="background: var(--gradient-2);"></div>
+          <div class="project-content">
+            <h3 class="project-title">Task Management App</h3>
+            <p class="project-description">
+              Collaborative task management application with real-time updates, 
+              team collaboration features, and advanced project tracking.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Prisma</span>
+              <span class="tech-tag">Socket.io</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Saurabh-Tiwari66/Tasking" class="project-link" onclick="event.stopPropagation()">
+                <i class="ri-external-link-line"></i> Live Demo
+              </a>
+              <a href="https://github.com/Saurabh-Tiwari66/Tasking" class="project-link" onclick="event.stopPropagation()">
+                <i class="ri-github-line"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in" onclick="showProjectDetails('weather')">
+          <div class="project-image" style="background: var(--gradient-3);"></div>
+          <div class="project-content">
+            <h3 class="project-title">Weather Dashboard</h3>
+            <p class="project-description">
+              Beautiful weather application with location-based forecasts, 
+              interactive maps, and detailed weather analytics.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">OpenWeather API</span>
+              <span class="tech-tag">PWA</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openLiveDemo('weather')">
+                <i class="ri-external-link-line"></i> Live Demo
+              </a>
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openGithub('weather')">
+                <i class="ri-github-line"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in" onclick="showProjectDetails('ai-chat')">
+          <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+          <div class="project-content">
+            <h3 class="project-title">AI Chat Application</h3>
+            <p class="project-description">
+              Modern chat application with AI integration, real-time messaging, 
+              file sharing, and advanced user management system.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">OpenAI API</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Material-UI</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openLiveDemo('ai-chat')">
+                <i class="ri-external-link-line"></i> Live Demo
+              </a>
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openGithub('ai-chat')">
+                <i class="ri-github-line"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in" onclick="showProjectDetails('3d-portfolio')">
+          <div class="project-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);"></div>
+          <div class="project-content">
+            <h3 class="project-title">3D Portfolio Website</h3>
+            <p class="project-description">
+              Interactive 3D portfolio with WebGL animations, smooth transitions, 
+              and immersive user experience using Three.js.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Three.js</span>
+              <span class="tech-tag">GSAP</span>
+              <span class="tech-tag">WebGL</span>
+              <span class="tech-tag">Blender</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openLiveDemo('3d-portfolio')">
+                <i class="ri-external-link-line"></i> Live Demo
+              </a>
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openGithub('3d-portfolio')">
+                <i class="ri-github-line"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card fade-in" onclick="showProjectDetails('lms')">
+          <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+          <div class="project-content">
+            <h3 class="project-title">Learning Management System</h3>
+            <p class="project-description">
+              Complete LMS with course creation, progress tracking, video streaming, 
+              and comprehensive admin dashboard for educational institutions.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">MERN Stack</span>
+              <span class="tech-tag">Video.js</span>
+              <span class="tech-tag">Chart.js</span>
+              <span class="tech-tag">JWT</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openLiveDemo('lms')">
+                <i class="ri-external-link-line"></i> Live Demo
+              </a>
+              <a href="#" class="project-link" onclick="event.stopPropagation(); openGithub('lms')">
+                <i class="ri-github-line"></i> Source Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Experience & Journey</h2>
+        <p>My professional journey and key milestones</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item fade-in" onclick="showExperienceDetails('senior-dev')">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2024 - Present</div>
+            <h3 class="timeline-title">Junior Frontend Developer</h3>
+            <div class="timeline-company">Tech Innovations Inc.</div>
+            <p class="timeline-description">
+              Assisted in frontend development for enterprise applications, collaborated closely with senior developers, and learned modern React patterns. Contributed to UI improvements that enhanced user experience and supported performance optimization efforts, helping improve application responsiveness and engagement.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in" onclick="showExperienceDetails('fullstack-dev')">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2023 - 2024</div>
+            <h3 class="timeline-title">Full-Stack Developer</h3>
+            <div class="timeline-company"></div>
+            <p class="timeline-description">
+              Developed and maintained multiple web applications using MERN stack. 
+              Collaborated with cross-functional teams to deliver high-quality products. 
+              Implemented CI/CD pipelines and improved deployment efficiency by 60%.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in" onclick="showExperienceDetails('frontend-intern')">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2022 - 2023</div>
+            <h3 class="timeline-title">Frontend Developer Intern</h3>
+            <div class="timeline-company">Digital Solutions Ltd.</div>
+            <p class="timeline-description">
+              Worked on responsive web applications, gained hands-on experience with modern 
+              frontend frameworks, and contributed to open-source projects. Successfully 
+              completed 15+ projects during the internship period.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in" onclick="showExperienceDetails('bootcamp')">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2021 - 2022</div>
+            <h3 class="timeline-title">Web Development Bootcamp</h3>
+            <div class="timeline-company">CodeMaster Academy</div>
+            <p class="timeline-description">
+              Intensive 12-month program covering full-stack web development. 
+              Mastered HTML, CSS, JavaScript, React, Node.js, and database management. 
+              Graduated with distinction and best project award.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-in" onclick="showExperienceDetails('education')">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2020 - 2021</div>
+            <h3 class="timeline-title">Bachelor's in Computer Applications</h3>
+            <div class="timeline-company">University of Technology</div>
+            <p class="timeline-description">
+              Completed degree with focus on software development, data structures, 
+              and algorithms. Participated in various coding competitions and 
+              hackathons, winning several awards for innovative solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Let's Work Together</h2>
+        <p>Ready to bring your ideas to life? Let's discuss your next project</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info fade-in">
+          <h3>Get In Touch</h3>
+          <p>
+            I'm always excited to work on new projects and collaborate with 
+            amazing people. Whether you have a project in mind or just want 
+            to chat about technology, feel free to reach out!
+          </p>
+          <div class="contact-methods">
+            <a href="https://mail.google.com/mail/u/0/#inbox" class="contact-method" onclick="openEmail()">
+              <i class="ri-mail-line"></i>
+              <div>
+                <strong>Email</strong>
+                <p>saurabhtiwari2042001@gmail.com</p>
+              </div>
+            </a>
+            <a href="tel:+919876543210" class="contact-method" onclick="callPhone()">
+              <i class="ri-phone-line"></i>
+              <div>
+                <strong>Phone</strong>
+                <p>+91 6306608437</p>
+              </div>
+            </a>
+            <a href="#" class="contact-method" onclick="showLocation()">
+              <i class="ri-map-pin-line"></i>
+              <div>
+                <strong>Location</strong>
+                <p>Lucknow, Uttar Pradesh, India</p>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/saurabh-tiwari" class="contact-method" onclick="openLinkedIn()">
+              <i class="ri-linkedin-line"></i>
+              <div>
+                <strong>LinkedIn</strong>
+                <p>Connect with me</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form fade-in" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">
+            <i class="ri-send-plane-line"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="#" class="social-link" onclick="openSocial('github')" title="GitHub">
+          <i class="ri-github-line"></i>
+        </a>
+        <a href="#" class="social-link" onclick="openSocial('linkedin')" title="LinkedIn">
+          <i class="ri-linkedin-line"></i>
+        </a>
+        <a href="#" class="social-link" onclick="openSocial('twitter')" title="Twitter">
+          <i class="ri-twitter-line"></i>
+        </a>
+        <a href="#" class="social-link" onclick="openSocial('instagram')" title="Instagram">
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a href="#" class="social-link" onclick="openSocial('dribbble')" title="Dribbble">
+          <i class="ri-dribbble-line"></i>
+        </a>
+      </div>
+      <p class="footer-text">
+        © 2024 Saurabh Tiwari. Crafted with ❤️ and lots of ☕
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal for Details -->
+  <div class="modal" id="detailModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div class="message" id="messageBox"></div> mai chahata  ki mere code ko next js me convert kr do mai tume aur code de raha hu css ka and js kar css ko tailwind me convert kr do aur code de raha hu pura folder structure bana ke dedena okk
+  <script src="script.js"></script>
+  </body>
+</html>
